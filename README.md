@@ -13,6 +13,23 @@ All codes of this repository work successfully under the following environments.
 
 In terms of the RubyGems dependencies, see [Gemfile](https://github.com/secondnoraworld/adprogex2/blob/master/Gemfile).
 
+## Environment Variables
+
+The environment variables are under the control of `.env` file. Create `.env` file under Rails application directory and append the environment variables below.
+
+```Ruby
+TWITTER_CONSUMER_KEY='YOUR_TWITTER_CONSUMER_KEY_HERE'
+TWITTER_CONSUMER_SECRET='YOUR_TWITTER_CONSUMER_SECRET_HERE'
+GITHUB_CLIENT_ID='YOUR_GITHUB_CLIENT_ID_HERE'
+GITHUB_CLIENT_SECRET='YOUR_GITHUB_CLIENT_SECRET_HERE'
+```
+
+Each API key is available at the following page.
+
+* [Twitter Application Management](https://apps.twitter.com)
+* [Developer applications](https://github.com/settings/developers)
+
+
 ## License
 
 All codes of this repository are available under the MIT license. See the [LICENSE](https://github.com/secondnoraworld/adprogex2/blob/master/LICENSE) for more infomation.
