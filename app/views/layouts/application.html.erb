@@ -4,11 +4,13 @@
     <title>Adprogex2</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
+    <script type="text/javascript" src="/assets/javascripts/materialize.min.js"></script>
   </body>
 </html>

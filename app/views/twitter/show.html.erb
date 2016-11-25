@@ -1,4 +1,3 @@
-<% @client.user_timeline(current_user.screen_name, { count: 2 } ).each do |timeline| %>
-  <% tweet = @client.status(timeline.id) %>
-  <li><% tweet.text %></li>
+<% @userinfo.each do |data| %>
+<p><%= data[0] %>: <%= data[1] %></p>
 <% end %>
