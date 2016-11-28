@@ -1,4 +1,5 @@
 class TwitterController < ApplicationController
+  before_action :signed_in?
 
   CONSUMER_KEY    = ENV['TWITTER_CONSUMER_KEY']
   CONSUMER_SECRET = ENV['TWITTER_CONSUMER_SECRET']
@@ -76,6 +77,13 @@ class TwitterController < ApplicationController
       @friends_userinfo.flatten!
     end
 
+  end
+
+  private
+  def signed_in?
+    unless current_user
+      redirect_to '/auth/twitter'
+    end
   end
 
 end
