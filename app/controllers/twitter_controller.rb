@@ -17,11 +17,28 @@ class TwitterController < ApplicationController
     }
     r               = HTTParty.post(post_url, body: body, headers: headers)
     bearer_token    = JSON.parse(r.body)['access_token']
-
-    get_url         = "https://api.twitter.com/1.1/users/show.json?screen_name=#{current_user.screen_name}"
     api_auth_header = {"Authorization": "Bearer #{bearer_token}"}
-    userinfo_origin = HTTParty.get(get_url, headers: api_auth_header).body
-    @userinfo       = JSON.parse(userinfo_origin)
+
+    case params[:request]
+    when 'userinfo'
+      get_show_url      = "https://api.twitter.com/1.1/users/show.json?screen_name=#{current_user.screen_name}"
+      userinfo_origin   = HTTParty.get(get_show_url, headers: api_auth_header).body
+      @userinfo         = JSON.parse(userinfo_origin)
+    when 'friends-only', 'followers-only'
+      get_friends_url     = "https://api.twitter.com/1.1/friends/ids.json?screen_name=#{current_user.screen_name}"
+      get_followers_url   = "https://api.twitter.com/1.1/followers/ids.json?screen_name=#{current_user.screen_name}"
+      friends_origin      = HTTParty.get(get_friends_url,   headers: api_auth_header).body
+      followers_origin    = HTTParty.get(get_followers_url, headers: api_auth_header).body
+      @friends            = JSON.parse(friends_origin)
+      @followers          = JSON.parse(followers_origin)
+    end
+
+    case params[:request]
+    when 'friends-only'
+      @friends_only   = @friends['ids'] - @followers['ids']
+    when 'followers-only'
+      @followers_only = @followers['ids'] - @friends['ids']
+    end
   end
 
 end

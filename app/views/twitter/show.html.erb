@@ -1,3 +1,54 @@
-<% @userinfo.each do |data| %>
-<p><%= data[0] %>: <%= data[1] %></p>
+<% if params[:request] === 'userinfo' %>
+<table class="responsive-table striped">
+  <tbody>
+    <tr>
+      <td>ユーザ名</td>
+      <td><%= @userinfo['name'] %></td>
+    </tr>
+    <tr>
+      <td>ID</td>
+      <td><%= @userinfo['screen_name'] %></td>
+    </tr>
+    <tr>
+      <td>フォロー数</td>
+      <td><%= @userinfo['friends_count'] %></td>
+    </tr>
+    <tr>
+      <td>フォロワー数</td>
+      <td><%= @userinfo['followers_count'] %></td>
+    </tr>
+    <tr>
+      <td>いいねの数</td>
+      <td><%= @userinfo['favourites_count'] %></td>
+    </tr>
+    <tr>
+      <td>リストに追加された数</td>
+      <td><%= @userinfo['listed_count'] %></td>
+    </tr>
+    <tr>
+      <td>ホームページ</td>
+      <td><a href="<%= @userinfo['entities']['url']['urls'][0]['expanded_url'] %>" target="_blank"><%= @userinfo['entities']['url']['urls'][0]['display_url'] %></a></td>
+    </tr>
+    <tr>
+      <td>説明文</td>
+      <td><%= @userinfo['description'] %></td>
+    </tr>
+    <tr>
+      <td>位置情報</td>
+      <td><%= @userinfo['location'] %></td>
+    </tr>
+    <tr>
+      <td>アカウント作成日</td>
+      <td><%= @userinfo['created_at'] %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+
+<% if params[:request] === 'friends-only' %>
+<%= @friends_only %>
+<% end %>
+
+<% if params[:request] === 'followers-only' %>
+<%= @followers_only %>
 <% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback' => 'sessions#create'
   get 'signout' => 'sessions#destroy'
 
-  get 'twitter/' => 'twitter#index', :as => 'twitter'
-  get 'twitter/show' => 'twitter#show'
+  get 'twitter' => 'twitter#index', :as => 'twitter'
+  get 'twitter/:request' => 'twitter#show'
 
 end
