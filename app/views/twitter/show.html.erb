@@ -1,5 +1,5 @@
 <% if params[:request] === 'userinfo' %>
-<table class="responsive-table striped">
+<table class="striped">
   <tbody>
     <tr>
       <td>ユーザ名</td>
@@ -46,11 +46,11 @@
 <% end %>
 
 <% if params[:request] === 'friends-only' || params[:request] === 'followers-only' %>
-<table class="responsive-table striped">
+<table class="striped">
   <tbody>
-    <% @friends_or_followers_only_screen_name.each do |screen_name| %>
+    <% @friends_userinfo.each do |friend_userinfo| %>
     <tr>
-      <td><a href="https://twitter.com/<%= screen_name %>" target="_blank"><%= '@' + screen_name %></a></td>
+      <td><a href="https://twitter.com/<%= friend_userinfo['screen_name'] %>" target="_blank"><%= friend_userinfo['screen_name'] %></a></td>
     </tr>
     <% end %>
   </tbody>

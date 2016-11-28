@@ -43,12 +43,33 @@ class TwitterController < ApplicationController
     case params[:request]
     when 'friends-only', 'followers-only'
       @friends_or_followers_only_screen_name = []
-      @friends_or_followers_only.each do |friend_or_follower_only|
-        html = Nokogiri::HTML(open("https://twitter.com/intent/user?user_id=#{friend_or_follower_only}"))
-        html.css('span.nickname').each do |screen_name|
-          @friends_or_followers_only_screen_name.push(screen_name.content.delete('@'))
+      @friends_userinfo_origin = []
+      @friends_userinfo = []
+      post_friends_or_followers_userinfo_url = "https://api.twitter.com/1.1/users/lookup.json?user_id="
+      count = 0
+      while count < @friends_or_followers_only.count do
+        if @friends_or_followers_only.count - count >= 100
+          100.times do |i|
+            post_friends_or_followers_userinfo_url += @friends_or_followers_only[count].to_s + ','
+            count += 1
+          end
+        else
+          (@friends_or_followers_only.count - count).times do |i|
+            post_friends_or_followers_userinfo_url += @friends_or_followers_only[count].to_s + ','
+            count += 1
+          end
         end
+        # delete last comma: 'a,b,c,d,e,' => 'a,b,c,d,e'
+        post_friends_or_followers_userinfo_url.chop!
+        @friends_userinfo_origin.push(HTTParty.post(post_friends_or_followers_userinfo_url, headers: api_auth_header).body)
+        # reset lookup json request url
+        post_friends_or_followers_userinfo_url = "https://api.twitter.com/1.1/users/lookup.json?user_id="
       end
+      @countfoo = count
+      @friends_userinfo_origin.each do |friend_userinfo_origin|
+        @friends_userinfo.push(JSON.parse(friend_userinfo_origin))
+      end
+      @friends_userinfo.flatten!
     end
 
   end
