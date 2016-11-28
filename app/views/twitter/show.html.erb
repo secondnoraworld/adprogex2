@@ -45,10 +45,14 @@
 </table>
 <% end %>
 
-<% if params[:request] === 'friends-only' %>
-<%= @friends_only %>
-<% end %>
-
-<% if params[:request] === 'followers-only' %>
-<%= @followers_only %>
+<% if params[:request] === 'friends-only' || params[:request] === 'followers-only' %>
+<table class="responsive-table striped">
+  <tbody>
+    <% @friends_or_followers_only_screen_name.each do |screen_name| %>
+    <tr>
+      <td><a href="https://twitter.com/<%= screen_name %>" target="_blank"><%= '@' + screen_name %></a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>

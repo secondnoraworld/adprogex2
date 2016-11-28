@@ -35,10 +35,22 @@ class TwitterController < ApplicationController
 
     case params[:request]
     when 'friends-only'
-      @friends_only   = @friends['ids'] - @followers['ids']
+      @friends_or_followers_only = @friends['ids'] - @followers['ids']
     when 'followers-only'
-      @followers_only = @followers['ids'] - @friends['ids']
+      @friends_or_followers_only = @followers['ids'] - @friends['ids']
     end
+
+    case params[:request]
+    when 'friends-only', 'followers-only'
+      @friends_or_followers_only_screen_name = []
+      @friends_or_followers_only.each do |friend_or_follower_only|
+        html = Nokogiri::HTML(open("https://twitter.com/intent/user?user_id=#{friend_or_follower_only}"))
+        html.css('span.nickname').each do |screen_name|
+          @friends_or_followers_only_screen_name.push(screen_name.content.delete('@'))
+        end
+      end
+    end
+
   end
 
 end
