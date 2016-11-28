@@ -1,5 +1,2 @@
-<% if current_user %>
-  <%= current_user.name %><%= link_to 'Sign out', signout_path %>
-<% else %>
-  <%= link_to 'Sign in with Twitter', '/auth/twitter' %>
-<% end %>
+<li><%= link_to 'Twitter統計情報', twitter_path %></li>
+<li><%= link_to 'ポートフォリオ自動生成サービス', github_path %></li>

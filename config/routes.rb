@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get 'twitter' => 'twitter#index', :as => 'twitter'
   get 'twitter/:request' => 'twitter#show'
 
+  get 'github' => 'github#index', :as => 'github'
+
 end

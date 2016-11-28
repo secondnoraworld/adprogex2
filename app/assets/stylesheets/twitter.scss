@@ -1,3 +1,22 @@
 // Place all the styles related to the twitter controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  margin: 20px;
+}
+
+table {
+  margin: 20px 0;
+}
+
+h4 .screen-name {
+  color: #808080;
+  padding-left: 20px;
+}
+
+.friends-only-description-icon {
+  font-size: 20px;
+  padding-left: 20px;
+  cursor: default;
+}

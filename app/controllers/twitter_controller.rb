@@ -35,8 +35,12 @@ class TwitterController < ApplicationController
 
     case params[:request]
     when 'friends-only'
+      # TODO: fix: sometime an error occurred: undefined method `-' for nil:NilClass
+      # perhaps: Twitter API rate limit exceeded
       @friends_or_followers_only = @friends['ids'] - @followers['ids']
     when 'followers-only'
+      # TODO: fix: sometime an error occurred: undefined method `-' for nil:NilClass
+      # perhaps: Twitter API rate limit exceeded
       @friends_or_followers_only = @followers['ids'] - @friends['ids']
     end
 

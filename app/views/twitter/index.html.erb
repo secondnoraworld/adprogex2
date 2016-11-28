@@ -1,5 +1,11 @@
 <% if current_user %>
-  <%= current_user.screen_name %><%= link_to 'Sign out', signout_path %>
+  <ul class="collection with-header">
+    <li class="collection-header"><h4><%= current_user.name %><span class="screen-name"><%= current_user.screen_name %></span></h4></li>
+    <li class="collection-item"><%= link_to '統計情報を見る', '/twitter/userinfo' %></li>
+    <li class="collection-item"><%= link_to '片思いしているユーザを表示する', '/twitter/friends-only' %><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="自分がフォローしていて、相手がフォローしていないユーザの一覧を表示します"><i class="material-icons friends-only-description-icon">info_outline</i></a></li>
+    <li class="collection-item"><%= link_to '片思いされているユーザを表示する', '/twitter/followers-only' %><a class="tooltipped" data-position="right" data-delay="50" data-tooltip="相手がフォローしていて、自分がフォローしていないユーザの一覧を表示します"><i class="material-icons friends-only-description-icon">info_outline</i></a></li>
+    <li class="collection-item"><%= link_to 'ログアウトする', signout_path %></li>
+  </ul>
 <% else %>
-  <%= link_to 'Sign in with Twitter', '/auth/twitter' %>
+  <%= link_to 'Twitterアカウントでログイン', '/auth/twitter' %>
 <% end %>

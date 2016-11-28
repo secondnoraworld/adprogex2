@@ -1,4 +1,5 @@
 <% if params[:request] === 'userinfo' %>
+<a href="/twitter" class="waves-effect waves-light btn">戻る</a>
 <table class="striped">
   <tbody>
     <tr>
@@ -43,16 +44,21 @@
     </tr>
   </tbody>
 </table>
+<a href="/twitter" class="waves-effect waves-light btn">戻る</a>
 <% end %>
 
 <% if params[:request] === 'friends-only' || params[:request] === 'followers-only' %>
+<a href="/twitter" class="waves-effect waves-light btn">戻る</a>
+<div><p>ユーザ数: <%= @friends_userinfo.count %></p></div>
 <table class="striped">
   <tbody>
-    <% @friends_userinfo.each do |friend_userinfo| %>
+    <% @friends_userinfo.each_with_index do |friend_userinfo, count| %>
     <tr>
+      <td><%= count + 1 %></td>
       <td><a href="https://twitter.com/<%= friend_userinfo['screen_name'] %>" target="_blank"><%= friend_userinfo['screen_name'] %></a></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<a href="/twitter" class="waves-effect waves-light btn">戻る</a>
 <% end %>
