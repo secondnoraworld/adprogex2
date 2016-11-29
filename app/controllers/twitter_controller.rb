@@ -70,7 +70,6 @@ class TwitterController < ApplicationController
         # reset lookup json request url
         post_friends_or_followers_userinfo_url = "https://api.twitter.com/1.1/users/lookup.json?user_id="
       end
-      @countfoo = count
       @friends_userinfo_origin.each do |friend_userinfo_origin|
         @friends_userinfo.push(JSON.parse(friend_userinfo_origin))
       end
