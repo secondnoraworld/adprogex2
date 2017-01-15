@@ -5,17 +5,21 @@ class GithubController < ApplicationController
   CLIENT_SECRET = ENV['GITHUB_CLIENT_SECRET']
 
   def index
-    puts CLIENT_ID
-    puts CLIENT_SECRET
+    # Octokit
+    token = @current_user.token
+    oclient = Octokit::Client.new(:access_token => token)
+
   end
   
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
   private
   def signed_in?
     unless current_user
       redirect_to '/auth/github'
     end
   end
+
 end
