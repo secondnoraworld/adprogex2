@@ -38,6 +38,7 @@ gem 'omniauth-github'
 gem 'twitter'
 gem 'httparty'
 gem 'nokogiri'
+gem 'octokit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
