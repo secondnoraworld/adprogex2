@@ -9,6 +9,13 @@ class GithubController < ApplicationController
     token = @current_user.token
     oclient = Octokit::Client.new(:access_token => token)
 
+    repos = oclient.repositories(oclient.user.login)
+    repos.each do |repo|
+      puts "name: #{repo.name}, language: #{repo.language}"
+      puts "url: #{repo.url}"
+      # puts "repository info = #{repo.attrs}"
+    end
+    
   end
   
   def current_user
