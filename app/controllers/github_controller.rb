@@ -16,6 +16,7 @@ class GithubController < ApplicationController
       h.store("name", repo.name)
       h.store("lang", repo.language)
       h.store("url", repo.url)
+      h.store("description", repo.description)
       @data.push(h)
     end
 
