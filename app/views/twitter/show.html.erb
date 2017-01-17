@@ -12,11 +12,11 @@
   <tbody>
     <tr>
       <td>ユーザ名</td>
-      <td><%= @userinfo['name'] %></td>
+      <td>テスト</td>
     </tr>
     <tr>
       <td>スクリーンネーム</td>
-      <td><%= '@' + @userinfo['screen_name'] %></td>
+      <td>@test</td>
     </tr>
     <tr>
       <td>フォロー数</td>
@@ -36,11 +36,11 @@
     </tr>
     <tr>
       <td>ホームページ</td>
-      <td><a href="<%= @userinfo['entities']['url']['urls'][0]['expanded_url'] %>" target="_blank"><%= @userinfo['entities']['url']['urls'][0]['display_url'] %></a></td>
+      <td>No homepage provided</td>
     </tr>
     <tr>
       <td>説明文</td>
-      <td><%= @userinfo['description'] %></td>
+      <td>No description provided</td>
     </tr>
     <tr>
       <td>位置情報</td>
@@ -53,7 +53,7 @@
   </tbody>
 </table>
 
-<iframe src="https://platform.twitter.com/widgets/tweet_button.html?size=l&text=<%= @userinfo['name'] %>さんの統計解析結果%0D%0Dフォロー数:%20<%= @userinfo['friends_count'] %>%0Dフォロワー数:%20<%= @userinfo['followers_count'] %>%0Dいいねの数:%20<%= @userinfo['favourites_count'] %>%0Dリストに追加された数:%20<%= @userinfo['listed_count'] %>" width="77" height="28" style="border: 0; overflow: hidden;"></iframe>
+<iframe src="https://platform.twitter.com/widgets/tweet_button.html?size=l&text=テストさんの統計解析結果%0D%0Dフォロー数:%20<%= @userinfo['friends_count'] %>%0Dフォロワー数:%20<%= @userinfo['followers_count'] %>%0Dいいねの数:%20<%= @userinfo['favourites_count'] %>%0Dリストに追加された数:%20<%= @userinfo['listed_count'] %>" width="77" height="28" style="border: 0; overflow: hidden;"></iframe>
 <% end %>
 
 <% if params[:request] === 'friends-only' || params[:request] === 'followers-only' %>
