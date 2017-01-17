@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'auth/:provider/callback' => 'sessions#create'
-  get 'signout' => 'sessions#destroy'
+  get 'signout'                 => 'sessions#destroy'
 
-  get 'twitter' => 'twitter#index', :as => 'twitter'
-  get 'twitter/:request' => 'twitter#show'
+  get 'twitter'                    => 'twitter#index', :as => 'twitter'
+  get 'twitter/:request'           => 'twitter#show'
+  get 'twitter/unfollow/:username' => 'twitter#destroy'
 
   get 'github' => 'github#index', :as => 'github'
   get 'github/autofolio' => 'github#autofolio'

@@ -77,7 +77,19 @@ class TwitterController < ApplicationController
       end
       @friends_userinfo.flatten!
     end
+  end
 
+  def destroy
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+      config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+      config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
+      config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
+    end
+
+    username = params[:username]
+    client.unfollow(username)
+    redirect_to '/twitter/friends-only'
   end
 
   private
