@@ -21,6 +21,23 @@ class GithubController < ApplicationController
     end
 
   end
+
+  def autofolio
+    # Octokit
+    token = @current_user.token
+    oclient = Octokit::Client.new(:access_token => token)
+
+    @data = []
+    repos = oclient.repositories(oclient.user.login)
+    repos.each do |repo|
+      h = {}
+      h.store("name", repo.name)
+      h.store("lang", repo.language)
+      h.store("url", repo.url)
+      h.store("description", repo.description)
+      @data.push(h)
+    end
+  end
   
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

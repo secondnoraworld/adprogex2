@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get 'twitter/:request' => 'twitter#show'
 
   get 'github' => 'github#index', :as => 'github'
+  get 'github/autofolio' => 'github#autofolio'
 
 end
