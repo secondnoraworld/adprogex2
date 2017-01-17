@@ -89,7 +89,7 @@ class TwitterController < ApplicationController
 
     username = params[:username]
     client.unfollow(username)
-    redirect_to '/twitter/friends-only'
+    redirect_to '/twitter/friends-only', notice: '@' + username + 'さんをフォロー解除しました'
   end
 
   private
