@@ -63,7 +63,7 @@
     <tr>
       <td><%= count + 1 %></td>
       <td><a href="https://twitter.com/<%= friend_userinfo['screen_name'] %>" target="_blank"><%= '@' + friend_userinfo['screen_name'] %></a></td>
-      <td><%= link_to @btn_title, '/twitter/unfollow/' + friend_userinfo['screen_name'], {:class => 'waves-effect waves-light btn'} %></td>
+      <td><%= link_to @btn_title, '/twitter/' + @btn_action + '/' + friend_userinfo['screen_name'], {:class => 'waves-effect waves-light btn'} %></td>
     </tr>
     <% end %>
   </tbody>

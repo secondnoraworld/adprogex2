@@ -39,12 +39,14 @@ class TwitterController < ApplicationController
       # TODO: fix: sometime an error occurred: undefined method `-' for nil:NilClass
       # perhaps: Twitter API rate limit exceeded
       @friends_or_followers_only = @friends['ids'] - @followers['ids']
-      @btn_title = 'フォロー解除'
+      @btn_title  = 'フォロー解除'
+      @btn_action = 'unfollow'
     when 'followers-only'
       # TODO: fix: sometime an error occurred: undefined method `-' for nil:NilClass
       # perhaps: Twitter API rate limit exceeded
       @friends_or_followers_only = @followers['ids'] - @friends['ids']
-      @btn_title = 'フォロー'
+      @btn_title  = 'フォロー'
+      @btn_action = 'follow'
     end
 
     case params[:request]
@@ -77,6 +79,19 @@ class TwitterController < ApplicationController
       end
       @friends_userinfo.flatten!
     end
+  end
+
+  def create
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+      config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+      config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
+      config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
+    end
+
+    username = params[:username]
+    client.follow(username)
+    redirect_to '/twitter/followers-only', notice: '@' + username + 'さんをフォローしました'
   end
 
   def destroy

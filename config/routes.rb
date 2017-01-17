@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'twitter'                    => 'twitter#index', :as => 'twitter'
   get 'twitter/:request'           => 'twitter#show'
+  get 'twitter/follow/:username'   => 'twitter#create'
   get 'twitter/unfollow/:username' => 'twitter#destroy'
 
   get 'github' => 'github#index', :as => 'github'
