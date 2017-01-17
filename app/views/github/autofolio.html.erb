@@ -11,7 +11,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Autofolio</a>
+      <a href="#" class="brand-logo center">Autofolio</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       </ul>
     </div>
@@ -23,10 +23,10 @@
           <li class="collection-item avatar">
             <i class="material-icons circle">folder</i>
             <span class="title"><%= data["name"] %></span>
-            <p>Language: <%= data["lang"] %><br>
+            <p>Language: <%= data["lang"] %> <br>
             <%= data["description"] %>
             </p>
-            <a class="secondary-content"><i class="material-icons">grade</i></a>
+            <a class="secondary-content" href="<%= data["url"] %>"><i class="material-icons">grade</i></a>
           </li>
           <% end %>
       </ul>
