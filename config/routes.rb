@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   get 'github' => 'github#index', :as => 'github'
   get 'github/autofolio' => 'github#autofolio'
+  get 'github/autofolio/download' => 'github#download'
 
 end
