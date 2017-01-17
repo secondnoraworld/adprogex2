@@ -18,17 +18,15 @@
   </nav>
   <div class="row container">
     <div class="col s12">
-      <ul class="collapsible" data-collapsible="accordion">
+      <ul class="collection">
         <% @data.each do |data| %>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>
-              <%= data["name"] %>
-            </div>
-            <div class="collapsible-body">
-              <p>
-                <%= data["description"] %>
-              </p>
-            </div>
+          <li class="collection-item avatar">
+            <i class="material-icons circle">folder</i>
+            <span class="title"><%= data["name"] %></span>
+            <p>Language: <%= data["lang"] %><br>
+            <%= data["description"] %>
+            </p>
+            <a class="secondary-content"><i class="material-icons">grade</i></a>
           </li>
           <% end %>
       </ul>
