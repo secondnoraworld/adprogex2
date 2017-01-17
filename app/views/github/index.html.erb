@@ -19,24 +19,21 @@
       </ul>
     </div>
   </nav>
-  <div class="row container">
-    <div class="col s12">
-      <ul class="collapsible" data-collapsible="accordion">
-        <% @data.each do |data| %>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>
-              <%= data["name"] %>
-            </div>
-            <div class="collapsible-body">
-              <p>
-                <%= data["description"] %>
-              </p>
-            </div>
-          </li>
-          <% end %>
-      </ul>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Autofolio</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A quick portfolio generator based on GitHub repo</h5>
+      </div>
+      <div class="row center">
+        <a href="github/autofolio" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+      </div>
+      <br><br>
+
     </div>
   </div>
+
   <footer class="page-footer">
     <div class="container">
       <div class="row">
