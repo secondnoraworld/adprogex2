@@ -41,12 +41,14 @@ class TwitterController < ApplicationController
       @friends_or_followers_only = @friends['ids'] - @followers['ids']
       @btn_title  = 'フォロー解除'
       @btn_action = 'unfollow'
+      @friends_or_followers_only_desc = 'あなたがフォローしていて、相手がフォローしていないユーザ'
     when 'followers-only'
       # TODO: fix: sometime an error occurred: undefined method `-' for nil:NilClass
       # perhaps: Twitter API rate limit exceeded
       @friends_or_followers_only = @followers['ids'] - @friends['ids']
       @btn_title  = 'フォロー'
       @btn_action = 'follow'
+      @friends_or_followers_only_desc = '相手がフォローしていて、あなたがフォローしていないユーザ'
     end
 
     case params[:request]

@@ -52,11 +52,14 @@
     </tr>
   </tbody>
 </table>
+
+<iframe src="https://platform.twitter.com/widgets/tweet_button.html?size=l&text=<%= @userinfo['name'] %>さんの統計解析結果%0D%0Dフォロー数:%20<%= @userinfo['friends_count'] %>%0Dフォロワー数:%20<%= @userinfo['followers_count'] %>%0Dいいねの数:%20<%= @userinfo['favourites_count'] %>%0Dリストに追加された数:%20<%= @userinfo['listed_count'] %>" width="77" height="28" style="border: 0; overflow: hidden;"></iframe>
 <% end %>
 
 <% if params[:request] === 'friends-only' || params[:request] === 'followers-only' %>
 <a href="/twitter" class="waves-effect waves-light btn">戻る</a>
 <div><p>ユーザ数: <%= @friends_userinfo.count %></p></div>
+<iframe src="https://platform.twitter.com/widgets/tweet_button.html?size=l&text=<%= @friends_or_followers_only_desc %>の数は<%= @friends_userinfo.count %>でした" width="77" height="28" style="border: 0; overflow: hidden;"></iframe>
 <table class="striped">
   <tbody>
     <% @friends_userinfo.each_with_index do |friend_userinfo, count| %>
